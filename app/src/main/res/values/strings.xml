@@ -3,4 +3,7 @@
     <string name="connection_error">Network error: failed to reach EtherScan.</string>
     <string name="loading">Loading&#8230;</string>
     <string name="refresh">Refresh</string>
+    <string name="appwidget_text">Loading&#8230;</string>
+    <string name="add_widget">Add widget</string>
+    <string name="app_widget_description">Keep updated on ETH market value</string>
 </resources>

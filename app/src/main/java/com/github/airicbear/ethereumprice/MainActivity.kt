@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
                 val etherResponse = response.body()
                 val ethUsdValue = etherResponse?.result?.usdValue?.toDouble()
                 val ethValue = NumberFormat.getCurrencyInstance().format(ethUsdValue)
+                binding.ethereumPrice.setTextAppearance(R.style.TextAppearance_AppCompat_Display1)
                 binding.ethereumPrice.text = ethValue
                 Log.d("EtherPrice", "ETH Value: $ethValue")
             }
