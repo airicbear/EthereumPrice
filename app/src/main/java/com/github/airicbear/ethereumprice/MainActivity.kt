@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
 
             Callback<EtherPriceResult> {
             override fun onFailure(call: Call<EtherPriceResult>, t: Throwable) {
+                binding.ethereumPrice.setTextAppearance(R.style.TextAppearance_AppCompat_Body1)
                 binding.ethereumPrice.text = getString(R.string.connection_error)
                 Log.d("EtherPrice", call.request().toString())
                 Log.d("EtherPrice", t.toString())
