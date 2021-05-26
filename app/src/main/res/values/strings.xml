@@ -2,4 +2,5 @@
     <string name="app_name">Ethereum Price</string>
     <string name="connection_error">Network error: failed to reach EtherScan.</string>
     <string name="loading">Loading&#8230;</string>
+    <string name="refresh">Refresh</string>
 </resources>

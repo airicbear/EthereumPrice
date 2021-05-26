@@ -19,9 +19,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        fetchEtherPrice()
+        binding.refreshButton.setOnClickListener {
+            Log.d("EtherPrice", "Refresh button clicked")
+            binding.ethereumPrice.text = getString(R.string.loading)
+            fetchEtherPrice()
+        }
+    }
 
+    private fun fetchEtherPrice() {
         EtherApi.retrofitService.getEtherPrice(BuildConfig.ETHER_SCAN_API_KEY).enqueue(object :
-
             Callback<EtherPriceResult> {
             override fun onFailure(call: Call<EtherPriceResult>, t: Throwable) {
                 binding.ethereumPrice.setTextAppearance(R.style.TextAppearance_AppCompat_Body1)
@@ -31,11 +38,12 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<EtherPriceResult>, response: Response<EtherPriceResult>) {
-
                 val etherResponse = response.body()
                 val ethUsdValue = etherResponse?.result?.usdValue?.toDouble()
-                binding.ethereumPrice.text = NumberFormat.getCurrencyInstance().format(ethUsdValue)
+                val ethValue = NumberFormat.getCurrencyInstance().format(ethUsdValue)
+                binding.ethereumPrice.text = ethValue
+                Log.d("EtherPrice", "ETH Value: $ethValue")
             }
-            })
+        })
     }
 }
