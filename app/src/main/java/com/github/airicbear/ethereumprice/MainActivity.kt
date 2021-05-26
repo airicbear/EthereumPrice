@@ -2,6 +2,7 @@ package com.github.airicbear.ethereumprice
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.github.airicbear.ethereumprice.databinding.ActivityMainBinding
 import com.github.airicbear.ethereumprice.model.EtherPriceResult
 import com.github.airicbear.ethereumprice.network.EtherApi
@@ -23,10 +24,13 @@ class MainActivity : AppCompatActivity() {
 
             Callback<EtherPriceResult> {
             override fun onFailure(call: Call<EtherPriceResult>, t: Throwable) {
-                binding.ethereumPrice.text = "${call.request()} \n\n ${t}"
+                binding.ethereumPrice.text = getString(R.string.connection_error)
+                Log.d("EtherPrice", call.request().toString())
+                Log.d("EtherPrice", t.toString())
             }
 
             override fun onResponse(call: Call<EtherPriceResult>, response: Response<EtherPriceResult>) {
+
                 val etherResponse = response.body()
                 val ethUsdValue = etherResponse?.result?.usdValue?.toDouble()
                 binding.ethereumPrice.text = NumberFormat.getCurrencyInstance().format(ethUsdValue)
