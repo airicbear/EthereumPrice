@@ -3,9 +3,9 @@
     android:description="@string/app_widget_description"
     android:initialKeyguardLayout="@layout/ethereum_price_app_widget"
     android:initialLayout="@layout/ethereum_price_app_widget"
-    android:minWidth="40dp"
+    android:minWidth="110dp"
     android:minHeight="40dp"
-    android:previewImage="@drawable/example_appwidget_preview"
+    android:previewImage="@drawable/ic_launcher_foreground"
     android:resizeMode="horizontal|vertical"
     android:updatePeriodMillis="1800000"
     android:widgetCategory="home_screen" />
